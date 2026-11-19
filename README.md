@@ -42,7 +42,7 @@ site is safe to publish before any of this is done:
 
 ```yaml
 comments:
-  repo: jfclere/jfclere-blogspot-com
+  repo: jfclere/jfclere.github.io
   repoId: ""
   category: Announcements
   categoryId: ""

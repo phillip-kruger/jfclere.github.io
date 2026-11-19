@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://live.greatsouthern.website/jfclere-blogspot-com/sitemap.xml
+
+Sitemap: https://jfclere.github.io/sitemap.xml
