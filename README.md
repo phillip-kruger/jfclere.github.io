@@ -36,17 +36,30 @@ Posts take comments through [giscus](https://giscus.app), which stores each thre
 GitHub Discussion on this repository. Nothing is self-hosted and no visitor is tracked.
 The embed lives in `templates/partials/comments.html` and the post layout includes it.
 
-Before it works, the repository owner has to do four things once:
+Settings are the `comments` key in the front matter of `content/index.html`, beside
+`analytics`. **While `categoryId` is empty no comment section is rendered at all**, so the
+site is safe to publish before any of this is done:
+
+```yaml
+comments:
+  repo: jfclere/jfclere-blogspot-com
+  repoId: ""
+  category: Announcements
+  categoryId: ""
+```
+
+To turn comments on, the repository owner does this once:
 
 1. Settings > General > Features > tick **Discussions**.
 2. Install the [giscus app](https://github.com/apps/giscus) on this repository.
 3. Keep or create the **Announcements** discussion category.
-4. Run through [giscus.app](https://giscus.app) and paste the `data-category-id` it
-   gives you into `templates/partials/comments.html`, replacing
-   `REPLACE_WITH_CATEGORY_ID`.
+4. Run through [giscus.app](https://giscus.app) and copy the `data-repo-id` and
+   `data-category-id` it gives you into `repoId` and `categoryId` above.
 
-Threads are matched to a post by its path, so a post keeps its thread for as long as it
-keeps its address. Moderation is done in the repository's Discussions tab.
+Threads are keyed on the post's source file name (`data-mapping=specific`), not its
+address, so they survive moving the repository, a GitHub Pages path and a later custom
+domain. Renaming a post file orphans its thread. Moderation is done in the repository's
+Discussions tab.
 
 ## Deployment
 

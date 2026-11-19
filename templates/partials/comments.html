@@ -5,21 +5,36 @@
      this file was added for this site and is ours to edit. If the elf ever
      installs its own plugin, that one wins and this file goes.
 
+     Settings live in the `comments` key of content/index.html front matter, the
+     same place as `analytics`. While categoryId is empty nothing is rendered, so
+     the site is safe to publish before Discussions is turned on.
+
      Setup, done once by whoever owns the repository:
        1. Settings > General > Features > tick Discussions.
        2. Install the giscus app: https://github.com/apps/giscus
        3. Create (or keep) the Announcements category.
-       4. Fill in data-category-id below from https://giscus.app
-     The repo id is already correct for Great-Southern-Websites/jfclere-blogspot-com.
+       4. Put the repo id and category id from https://giscus.app into
+          content/index.html.
 
-     Threads are keyed on the page path, so a post keeps its thread as long as it
-     keeps its old Blogger address (/YYYY/MM/slug.html). !}
+     Threads are keyed on the post's source file name, not its address, so they
+     survive the move to a new repository, a GitHub Pages path and a later
+     custom domain. Renaming a post file orphans its thread. !}
+{@io.quarkiverse.roq.frontmatter.runtime.model.DocumentPage page}
+{@io.quarkiverse.roq.frontmatter.runtime.model.Site site}
+{#if site.data.containsKey("comments")}
+{#let cfg=site.data.getJsonObject('comments')}
+{#if cfg.getString('categoryId', '')}
 <section class="comments" aria-labelledby="comments-heading">
   <h2 id="comments-heading">Comments</h2>
-  <div class="giscus"></div>
+  <div class="giscus"
+       data-term="{=page.baseFileName}"
+       data-giscus-repo="{=cfg.getString('repo', '')}"
+       data-giscus-repo-id="{=cfg.getString('repoId', '')}"
+       data-giscus-category="{=cfg.getString('category', 'Announcements')}"
+       data-giscus-category-id="{=cfg.getString('categoryId', '')}"></div>
   <noscript>
     <p class="muted">Comments need JavaScript. You can read and write them
-      <a href="https://github.com/Great-Southern-Websites/jfclere-blogspot-com/discussions">on GitHub Discussions</a>.</p>
+      <a href="https://github.com/{=cfg.getString('repo', '')}/discussions">on GitHub Discussions</a>.</p>
   </noscript>
 </section>
 <script>{|
@@ -41,11 +56,12 @@
     s.src = 'https://giscus.app/client.js';
     s.async = true;
     s.crossOrigin = 'anonymous';
-    s.setAttribute('data-repo', 'Great-Southern-Websites/jfclere-blogspot-com');
-    s.setAttribute('data-repo-id', 'R_kgDOVzyEsA');
-    s.setAttribute('data-category', 'Announcements');
-    s.setAttribute('data-category-id', 'REPLACE_WITH_CATEGORY_ID');
-    s.setAttribute('data-mapping', 'pathname');
+    s.setAttribute('data-repo', mount.dataset.giscusRepo);
+    s.setAttribute('data-repo-id', mount.dataset.giscusRepoId);
+    s.setAttribute('data-category', mount.dataset.giscusCategory);
+    s.setAttribute('data-category-id', mount.dataset.giscusCategoryId);
+    s.setAttribute('data-mapping', 'specific');
+    s.setAttribute('data-term', mount.dataset.term);
     s.setAttribute('data-strict', '1');
     s.setAttribute('data-reactions-enabled', '1');
     s.setAttribute('data-emit-metadata', '0');
@@ -65,3 +81,6 @@
     mq.addEventListener('change', sync);
   })();
 |}</script>
+{/if}
+{/let}
+{/if}

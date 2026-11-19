@@ -3,6 +3,14 @@ title: "jfc'log"
 description: "A personal technology blog by Jean-Frederic Clere: hands-on notes on Tomcat, Apache httpd, OpenSSL, post quantum crypto, Raspberry Pi and Fedora."
 image: logo.png
 layout: default
+# Comments on posts, through giscus (see templates/partials/comments.html).
+# Leave categoryId empty and no comment section is rendered at all, which is
+# what you want until the repository below has Discussions turned on.
+comments:
+  repo: jfclere/jfclere-blogspot-com
+  repoId: ""
+  category: Announcements
+  categoryId: ""
 ---
 {@io.quarkiverse.roq.frontmatter.runtime.model.NormalPage page}
 {@io.quarkiverse.roq.frontmatter.runtime.model.Site site}
