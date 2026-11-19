@@ -4,13 +4,15 @@ description: "A personal technology blog by Jean-Frederic Clere: hands-on notes 
 image: logo.png
 layout: default
 # Comments on posts, through giscus (see templates/partials/comments.html).
-# Leave categoryId empty and no comment section is rendered at all, which is
-# what you want until the repository below has Discussions turned on.
+# Leave categoryId empty and no comment section is rendered at all.
+#
+# `repo` is the only line that changes when the repository moves accounts. The
+# two ids below belong to the repository itself and survive a transfer.
 comments:
-  repo: jfclere/jfclere.github.io
-  repoId: ""
+  repo: phillip-kruger/jfclere.github.io
+  repoId: "R_kgDOVz3Nag"
   category: Announcements
-  categoryId: ""
+  categoryId: "DIC_kwDOVz3Nas4DLeJJ"
 ---
 {@io.quarkiverse.roq.frontmatter.runtime.model.NormalPage page}
 {@io.quarkiverse.roq.frontmatter.runtime.model.Site site}
