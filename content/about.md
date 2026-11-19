@@ -20,9 +20,3 @@ I work on the Apache Tomcat and Apache httpd side of things and on mod_cluster. 
 - [ASF pages](https://people.apache.org/~jfclere)
 - [GitHub](https://github.com/jfclere)
 - [Google News](https://news.google.com/)
-
-## Comments
-
-Every post takes comments. They are held in GitHub Discussions on this site's repository, so you need a GitHub account to post one, and you can edit or delete your own comment there at any time.
-
-The three comment threads from the old Blogger version of this site are not carried over.
