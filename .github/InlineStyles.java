@@ -17,7 +17,9 @@ import java.util.stream.Stream;
  * cannot safely sit inside a page, is left linked. An address inside the stylesheet that is
  * relative to it, such as a font under {@code ../fonts/}, is rewritten as it moves, so it
  * still points at the same file from the page.
- * Written by Great Southern Websites; safe to delete along with its step in deploy.yml.
+ *
+ * <p>Optional: delete this file along with its step in deploy.yml and the site still works,
+ * it just costs one more request per page.
  */
 public class InlineStyles {
 

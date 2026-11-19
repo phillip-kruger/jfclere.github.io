@@ -1,10 +1,5 @@
 target/
 .source/
-BRIEF.md
-STYLE.md
-DIRECTION.md
-.gsw-selections/
-.claude/
 *.iml
 .idea/
 .vscode/

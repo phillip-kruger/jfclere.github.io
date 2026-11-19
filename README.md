@@ -1,7 +1,7 @@
-# Website
+# jfc'log
 
-Static site built with [Quarkus Roq](https://iamroq.dev/) and published on GitHub Pages
-by [Great Southern Websites](https://greatsouthernwebsites.com.au).
+The blog of Jean-Frederic Clere, carried over from Blogger. A static site built with
+[Quarkus Roq](https://iamroq.dev/) and published on GitHub Pages.
 
 ## Local development
 

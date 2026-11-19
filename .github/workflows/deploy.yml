@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
 
 # One Pages deployment at a time: a second run queues behind the first instead
-# of being refused with "in progress deployment" (the elf's first push and its
-# publish commit arrive seconds apart).
+# of being refused with "in progress deployment" when two pushes arrive seconds
+# apart.
 concurrency:
   group: pages
   cancel-in-progress: false
