@@ -389,3 +389,11 @@ p { margin: 0 0 1rem; }
 .pagination p { margin: 0; }
 .pagination .page-number { color: var(--fg-muted); font-size: 0.9rem; }
 .pagination a { text-decoration: none; }
+
+/* ---- comments (giscus, templates/partials/comments.html) ----------------- */
+.comments { margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px dotted var(--ochre); }
+.comments h2 { margin: 0 0 1rem; font-size: 1.15rem; font-family: var(--font-mono); color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 0; padding-bottom: 0; }
+/* The iframe sizes itself; this only stops a flash of zero height on load. */
+.comments .giscus, .comments .giscus-frame { width: 100%; }
+.comments .giscus-frame { border: 0; color-scheme: normal; min-height: 9rem; }
+.comments noscript p { margin: 0; }

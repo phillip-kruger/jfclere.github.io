@@ -30,6 +30,24 @@ Output lands in `target/roq/`.
 | Images | `public/images/` |
 | Site config | `config/application.properties` |
 
+## Comments
+
+Posts take comments through [giscus](https://giscus.app), which stores each thread as a
+GitHub Discussion on this repository. Nothing is self-hosted and no visitor is tracked.
+The embed lives in `templates/partials/comments.html` and the post layout includes it.
+
+Before it works, the repository owner has to do four things once:
+
+1. Settings > General > Features > tick **Discussions**.
+2. Install the [giscus app](https://github.com/apps/giscus) on this repository.
+3. Keep or create the **Announcements** discussion category.
+4. Run through [giscus.app](https://giscus.app) and paste the `data-category-id` it
+   gives you into `templates/partials/comments.html`, replacing
+   `REPLACE_WITH_CATEGORY_ID`.
+
+Threads are matched to a post by its path, so a post keeps its thread for as long as it
+keeps its address. Moderation is done in the repository's Discussions tab.
+
 ## Deployment
 
 Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site with the Roq
