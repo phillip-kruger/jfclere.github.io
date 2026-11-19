@@ -1,0 +1,55 @@
+{@io.quarkiverse.roq.frontmatter.runtime.model.Page page}
+{@io.quarkiverse.roq.frontmatter.runtime.model.Site site}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  {#seo page site /}
+  {#rss site /}
+  {! Site settings live in content/index.html front matter (see AGENTS.md). !}
+  {#if site.data.containsKey("googleSiteVerification")}
+  <meta name="google-site-verification" content="{=site.data.getString('googleSiteVerification')}">
+  {/if}
+  {#if site.data.containsKey("analytics")}
+  {#ga4 tag=site.data.getJsonObject('analytics').getString("ga4", "") /}
+  {/if}
+  <link rel="icon" href="{=site.url('favicon.svg')}" type="image/svg+xml">
+  {! Web fonts, loaded so they never block the page. The builder replaces this
+     block with local @font-face rules after the session. Do not hand-edit it. !}
+  <script>{|
+    try {
+      var t = localStorage.getItem('site-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) { /* private mode: follow the OS preference */ }
+  |}</script>
+  <link rel="stylesheet" href="{=site.url('css/main.css')}">
+  {! The photo viewer (web/lightbox/): a photo in the page opens large. Leave it in. !}
+  {#bundle key="lightbox" tag="script" /}
+  {#include partials/structured-data /}
+  {#insert head /}
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{=site.url('fonts/fira-mono-400-normal-latin.woff2')}">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{=site.url('fonts/fira-mono-500-normal-latin.woff2')}">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{=site.url('fonts/fira-sans-400-normal-latin.woff2')}">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{=site.url('fonts/fira-sans-700-normal-latin.woff2')}">
+  {! Only inside the Great Southern Websites app's preview frame: lets the owner select part of this page
+     for a change request. Visitors never load anything. Leave it in. !}
+  <script>{|
+    if (window.top !== window.self) (function () {
+      var s = document.createElement('script');
+      s.src = 'https://www.greatsouthern.website/js/site-select.js'; s.async = true;
+      document.head.appendChild(s);
+    })();
+  |}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {#include partials/header /}
+  <main id="main">
+  {#insert /}
+  </main>
+  {#include partials/footer /}
+  {#include partials/theme-toggle /}
+</body>
+</html>

@@ -1,0 +1,59 @@
+---
+title: "Blog"
+description: "Full archive of jfc'log, 2005 to 2026: notes on Tomcat, Apache httpd, OpenSSL and PQC, Raspberry Pi, Fedora, wifi drivers and mod_cluster."
+layout: default
+eyebrow: "Archive"
+aliases:
+  - /2005/06/
+  - /2005/07/
+  - /2005/08/
+  - /2005/12/
+  - /2006/02/
+  - /2006/05/
+  - /2006/08/
+  - /2006/10/
+  - /2007/06/
+  - /2007/11/
+  - /2008/02/
+  - /2008/05/
+  - /2009/02/
+  - /2009/04/
+  - /2009/06/
+  - /2010/12/
+  - /2015/12/
+  - /2016/10/
+  - /2017/09/
+  - /2018/05/
+  - /2019/11/
+  - /2019/12/
+  - /2025/09/
+  - /2026/03/
+---
+{@io.quarkiverse.roq.frontmatter.runtime.model.NormalPage page}
+{@io.quarkiverse.roq.frontmatter.runtime.model.Site site}
+<section class="page-banner">
+  <div class="container">
+    <p class="eyebrow">Archive</p>
+    <h1>Blog</h1>
+    <p class="lead">Every note from 2005 to now, newest first. Twenty years of hacking on Tomcat, Apache httpd, OpenSSL, Raspberry Pi and Fedora.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="ledger">
+      {#for entry in site.collections.posts.group('year')}
+      <div class="ledger-year">
+        <span class="year">{=entry.key}</span>
+        <ul class="ledger-list">
+          {#for post in entry.value}
+          <li>
+            <time datetime="{=post.date.isoDate}">{=post.date.format('d MMM')}</time>
+            <a href="{=post.url}">{=post.title}</a>
+          </li>
+          {/for}
+        </ul>
+      </div>
+      {/for}
+    </div>
+  </div>
+</section>

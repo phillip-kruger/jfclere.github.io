@@ -1,0 +1,12 @@
+target/
+.source/
+BRIEF.md
+STYLE.md
+DIRECTION.md
+.gsw-selections/
+.claude/
+*.iml
+.idea/
+.vscode/
+.DS_Store
+node_modules/

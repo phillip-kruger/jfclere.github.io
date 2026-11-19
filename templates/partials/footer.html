@@ -1,0 +1,29 @@
+{@io.quarkiverse.roq.frontmatter.runtime.model.Site site}
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">jfc<span class="tld">'log</span></p>
+      <p class="muted">List of the things I have been hacking. Notes by Jean-Frederic Clere, since 2005.</p>
+    </div>
+    <div>
+      <h2>Pages</h2>
+      <nav aria-label="Footer navigation">
+        <ul>
+          <li><a href="{=site.url}">Home</a></li>
+          <li><a href="{=site.url('blog')}">Blog</a></li>
+          <li><a href="{=site.url('about')}">About</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div>
+      <h2>Links</h2>
+      <ul>
+        <li><a href="https://people.apache.org/~jfclere" rel="me">ASF pages</a></li>
+        <li><a href="https://github.com/jfclere" rel="me">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; Jean-Frederic Clere. Built with Quarkus Roq.</p>
+  </div>
+</footer>

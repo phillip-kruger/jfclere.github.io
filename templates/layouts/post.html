@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{@io.quarkiverse.roq.frontmatter.runtime.model.DocumentPage page}
+{@io.quarkiverse.roq.frontmatter.runtime.model.Site site}
+{#head}
+{! Code highlighting (web/app/main.js): bundled, loaded on posts only. !}
+{#bundle /}
+{/head}
+<section class="page-banner">
+  <div class="container">
+    <p class="eyebrow">Note / {=page.date.format('yyyy')}</p>
+    <h1>{=page.title}</h1>
+  </div>
+</section>
+<article class="section">
+  <div class="container prose">
+    <p class="post-date"><time datetime="{=page.date.isoDate}">{=page.date.format('EEEE, d MMMM yyyy')}</time></p>
+    {#if page.toc.size >= 3}
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      {=page.tocHtml}
+    </nav>
+    {/if}
+    {#insert /}
+    <nav class="post-nav">
+      {#if page.previous}<a href="{=page.previous.url}">&larr; {=page.previous.title}</a>{#else}<span></span>{/if}
+      {#if page.next}<a href="{=page.next.url}">{=page.next.title} &rarr;</a>{/if}
+    </nav>
+    <p style="margin-top:1.5rem"><a href="{=site.url('blog')}">All notes</a></p>
+  </div>
+</article>

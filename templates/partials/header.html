@@ -1,0 +1,18 @@
+{@io.quarkiverse.roq.frontmatter.runtime.model.Site site}
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="{=site.url}">
+      <img class="logo-light" src="{=site.url('images/logo.png')}" alt="jfc'log" width="384" height="133">
+      <img class="logo-dark" src="{=site.url('images/logo-dark.png')}" alt="jfc'log" width="384" height="133">
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-label="Toggle menu">
+    <label for="nav-toggle" class="nav-toggle"><span></span></label>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="{=site.url}">Home</a></li>
+        <li><a href="{=site.url('blog')}">Blog</a></li>
+        <li><a href="{=site.url('about')}">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

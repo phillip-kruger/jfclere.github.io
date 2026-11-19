@@ -1,0 +1,33 @@
+{@io.quarkiverse.roq.frontmatter.runtime.model.Site site}
+<!-- Structured data for search engines (schema.org). jfc'log is a personal
+     technology blog by Jean-Frederic Clere, so a Blog authored by a Person,
+     not a LocalBusiness. No address, phone, hours or booking exist, so those
+     keys are deleted. -->
+<script type="application/ld+json">
+{|{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "@id": "|}{=site.url.absolute}{|#blog",
+      "name": "jfc'log",
+      "url": "|}{=site.url.absolute}{|",
+      "description": "A personal technology blog by Jean-Frederic Clere: terse hands-on notes on Tomcat, Apache httpd, OpenSSL, post quantum crypto, Raspberry Pi, Fedora and wifi.",
+      "inLanguage": "en",
+      "image": "|}{=site.url('images/logo.png').absolute}{|",
+      "author": { "@id": "|}{=site.url.absolute}{|#jfc" },
+      "publisher": { "@id": "|}{=site.url.absolute}{|#jfc" }
+    },
+    {
+      "@type": "Person",
+      "@id": "|}{=site.url.absolute}{|#jfc",
+      "name": "Jean-Frederic Clere",
+      "url": "|}{=site.url('about').absolute}{|",
+      "sameAs": [
+        "https://people.apache.org/~jfclere",
+        "https://github.com/jfclere"
+      ]
+    }
+  ]
+}|}
+</script>

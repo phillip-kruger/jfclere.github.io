@@ -1,0 +1,62 @@
+---
+title: "jfc'log"
+description: "A personal technology blog by Jean-Frederic Clere: hands-on notes on Tomcat, Apache httpd, OpenSSL, post quantum crypto, Raspberry Pi and Fedora."
+image: logo.png
+layout: default
+---
+{@io.quarkiverse.roq.frontmatter.runtime.model.NormalPage page}
+{@io.quarkiverse.roq.frontmatter.runtime.model.Site site}
+
+<section class="masthead">
+  <div class="container masthead-grid">
+    <div>
+      <h1>jfc<span class="tld">'log</span></h1>
+      <p class="tagline">List of the things I have been hacking</p>
+    </div>
+    <div class="facts" aria-label="About this log">
+      <dl>
+        <dt>Author</dt><dd>Jean-Frederic Clere</dd>
+        <dt>Since</dt><dd>June 2005</dd>
+        <dt>Notes</dt><dd>{=site.collections.posts.size()}</dd>
+        <dt>Subjects</dt><dd>Tomcat, httpd, Pi</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">Latest notes</p>
+    <div class="note-list">
+      {#for post in site.collections.posts.featured(6)}
+      <article class="note">
+        <p class="meta"><time datetime="{=post.date.isoDate}">{=post.date.format('d MMMM yyyy')}</time></p>
+        <h3><a href="{=post.url}">{=post.title}</a></h3>
+        <p>{=post.description}</p>
+      </article>
+      {/for}
+    </div>
+    <p style="margin-top:2rem"><a class="btn btn-outline" href="{=site.url('blog')}">Browse the full archive</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">The archive</p>
+    <div class="ledger">
+      {#for entry in site.collections.posts.group('year')}
+      <div class="ledger-year">
+        <span class="year">{=entry.key}</span>
+        <ul class="ledger-list">
+          {#for post in entry.value}
+          <li>
+            <time datetime="{=post.date.isoDate}">{=post.date.format('d MMM')}</time>
+            <a href="{=post.url}">{=post.title}</a>
+          </li>
+          {/for}
+        </ul>
+      </div>
+      {/for}
+    </div>
+  </div>
+</section>
